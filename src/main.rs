@@ -119,23 +119,23 @@ where Iter: Iterator {
     }
 }
 
-// testing
+// test
 fn expensive_calculation(_n: &i32) {
   sleep(Duration::from_secs(1));
 }
 
-// testing
+// test
 fn main() {
   let brkts = ('<', '>');
 
   // Unbounded
-  // for n in (0 ..).progress().with_bars_of("=") {
+  // for n in (0 ..).progress().with_bars_of("+") {
   //   expensive_calculation(&n);
   // }
 
   // Bounded
   let v = vec![1, 2, 3];
-  for n in v.iter().progress().with_bound().with_delims(brkts) {
-    expensive_calculation(n)
+  for n in v.iter().progress().with_bound().with_delims(brkts).with_bars_of("=") {
+    expensive_calculation(n);
   }
 }
